@@ -1,3 +1,4 @@
+using ChaoticCupid.Core.Models;
 using Microsoft.AspNetCore.SignalR.Client;
 
 const string DefaultHubUrl = "http://localhost:5000/cupidHub";
@@ -12,6 +13,24 @@ var connection = new HubConnectionBuilder()
     .WithUrl(hubUrl)
     .WithAutomaticReconnect()
     .Build();
+
+connection.On<LoveLetterNotification>("LoveLetterArrived", notification =>
+{
+    Console.WriteLine();
+    Console.WriteLine("Stiglo vam je ljubavno pismo!");
+    Console.WriteLine($"Od: {notification.SenderUsername}");
+    Console.WriteLine($"Grad: {notification.SenderCity}");
+    Console.WriteLine($"Godine: {notification.SenderAge}");
+
+    if (!string.IsNullOrWhiteSpace(notification.SenderPhoneNumber))
+    {
+        Console.WriteLine($"Telefon: {notification.SenderPhoneNumber}");
+    }
+
+    Console.WriteLine($"Poruka: {notification.Message}");
+    Console.WriteLine("Unesite /confirm kada procitate pismo.");
+    Console.WriteLine();
+});
 
 await connection.StartAsync();
 
