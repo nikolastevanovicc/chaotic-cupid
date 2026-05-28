@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ChaoticCupid.Client/ChaoticCupid.Client.csproj" />
+    <Project Path="src/ChaoticCupid.Core/ChaoticCupid.Core.csproj" />
+    <Project Path="src/ChaoticCupid.Server/ChaoticCupid.Server.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ChaoticCupid.Tests/ChaoticCupid.Tests.csproj" />
+  </Folder>
+</Solution>
